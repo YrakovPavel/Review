@@ -42,9 +42,6 @@ CREATE TABLE `articles` (
 -- Дамп данных таблицы `articles`
 --
 
-INSERT INTO `articles` (`article_id`, `user_id`, `name`, `creation_date`, `advantages`, `disadvantages`, `grade`, `title_image`) VALUES
-(1, 6, 'DArkness', '2022-06-14', 'f', 'g', 6, '709248.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -89,9 +86,6 @@ CREATE TABLE `users` (
 --
 -- Дамп данных таблицы `users`
 --
-
-INSERT INTO `users` (`user_id`, `full_name`, `login`, `birth_date`, `rules`, `token`, `password`) VALUES
-(6, 'Ураков Павел Юрьевич', 'Dark', '2000-12-28', 'user', '5375e11ece4d940d1cf465b93b9bc71a', '123');
 
 --
 -- Индексы сохранённых таблиц
