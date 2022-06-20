@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Рецензии</title>
+    <script src = "js/create.js"></script>
+    <script src = "js/Entities/Server.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/blog.css" rel="stylesheet">
+  </head>
+  <body>
+  <div class="container">
+  
+  <header class="blog-header py-3">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+      <a class="navbar-brand mb-0 h1" href="./index.html">Рецензии</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active mr-sm-2">
+          <a class="nav-link mb-0 h6" id = "login" href="./login.html">Войти <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active mr-sm-2">
+            <a class="nav-link mb-0 h6" id = "registration" href="./registration.html">Зарегистрироваться <span class="sr-only">(current)</span></a>
+          </li>
+      </ul> 
+      </div>  
+    </nav>
+  </header>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <div class="blog-post py-5">
+        <form action="api/upload.php" method="post" enctype="multipart/form-data">
+          <input hidden id = "row" name = "row" ></input>
+          <input hidden id = "user_id" name = "user_id" ></input>
+          <input hidden id = "date" name = "creation_date"></input>
+          <h1 class="h3 mb-3 font-weight-normal">Создание рецензии</h1>
+          <label for="inputName" class="sr-only">Название рецензии</label>
+          <input type="text" name="name" class="form-control" placeholder="Название рецензии" required autofocus>
+          <div class="form-group py-3">
+            <label for="inputTitleImage">Заглавное изображение</label>
+            <input type="file" class="form-control-file" name = "title_image" id = "inputTitleImage" accept=".jpg, .jpeg, .png">
+          </div>
+          <div id = "unitHolder">
+            <div class = "py-3" id = "unit1">
+              <input type="text" name="subtitle1" class="form-control" placeholder="Подзаголовок" required autofocus>
+              <textarea class="form-control py-3" name = "paragraph1" cols = "50" rows = "10" placeholder = "Абзац рецензии" ></textarea>
+              <input type = "file" name = "image1" class="form-control-file py-3" accept=".jpg, .jpeg, .png">
+            </div>
+          </div>
+          <div class = "py-3">
+            <button type="button" id = "del" class="btn btn-sm btn-outline-secondary" disabled>Удалить последний фрагмент рецензии</button>
+          </div>
+          <div class="py-3">
+            <textarea class="form-control py-3" name = "advantages" cols = "10" rows = "2" placeholder = "Достоинства" ></textarea>
+          </div>
+          <div class="py-3">
+            <textarea class="form-control py-3" name = "disadvantages" cols = "10" rows = "2" placeholder = "Недостатки" ></textarea>
+          </div>
+          <label for="ControlSelect1">Оценка:</label>
+          <select class="form-control" name = "grade" id="ControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+          <div class = "py-3">
+            <button class="btn btn-lg btn-secondary btn-block" id = "addUnit" type="button">Добавить абзац</button>
+            <div class = "py-3">
+              <button class="btn btn-lg btn-primary btn-block" id = "sendReview" type="submit">Отправить рецензию</button>
+            </div>
+          </div>
+        </form>
+      </div><!-- /.blog-post -->
+    </div><!-- /.blog-main -->
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+</body>
+</html>

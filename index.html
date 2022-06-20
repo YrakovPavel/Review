@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Рецензии</title>
+    <script src = "js/main.js"></script>
+    <script src = "js/Entities/Server.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
+    <!-- Эта ссылка загружает с CDN все необходимые файлы Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Загрузка стилей оформления страницы -->
+    <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
+    <link href="css/album.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand mb-0 h1" href="./index.html">Рецензии</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item active mr-sm-2">
+      <a class="nav-link mb-0 h6" id = "write" href="#"><span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active mr-sm-2">
+      <a class="nav-link mb-0 h6" id = "login" href="./login.html">Войти <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active mr-sm-2">
+        <a class="nav-link mb-0 h6" id = "registration" href="./registration.html">Зарегистрироваться <span class="sr-only">(current)</span></a>
+      </li>
+    <div class="form-inline my-2 my-lg-0 ml-auto">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id = "inputSearch">
+        <button class="btn btn-warning my-2 my-sm-0" type="button" id = "sendSearch">Поиск</button>
+    </div>
+  </ul> 
+  </div>  
+</nav>
+
+<main role="main" class="container">
+    <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row" id = "articlesPlace">
+          </div>
+        </div>
+      </div>
+    
+</main>
+<!-- /.container -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="..css/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="css/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Перед закрывающим тегом <body> подключаем jQuery, Popper и Bootstrap JS, чтобы работали интерактивные компоненты  -->     
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" ></script>
+
+</body>
+</html>
