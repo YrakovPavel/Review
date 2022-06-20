@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 14 2022 г., 11:10
+-- Время создания: Июн 20 2022 г., 12:02
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -38,10 +38,6 @@ CREATE TABLE `articles` (
   `title_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `articles`
---
-
 -- --------------------------------------------------------
 
 --
@@ -67,6 +63,14 @@ CREATE TABLE `comments` (
   `comment` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`user_id`, `article_id`, `comment`) VALUES
+(6, 1, 'HEHE'),
+(7, 1, 'Mda');
+
 -- --------------------------------------------------------
 
 --
@@ -78,7 +82,7 @@ CREATE TABLE `users` (
   `full_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `login` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birth_date` date NOT NULL,
-  `rules` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
+  `rules` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'author',
   `token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -86,6 +90,13 @@ CREATE TABLE `users` (
 --
 -- Дамп данных таблицы `users`
 --
+
+INSERT INTO `users` (`user_id`, `full_name`, `login`, `birth_date`, `rules`, `token`, `password`) VALUES
+(6, 'Ураков Павел Юрьевич', 'Dark', '2000-12-28', 'user', '', '123'),
+(7, 'Максимов Петр Альвианович', 'VeryAuthor', '1988-06-15', 'author', '', 'Hate'),
+(8, 'Гуляев Модест Федотович', 'HeHeHe', '2007-05-15', 'admin', '', '22'),
+(9, 'Макарова Владислава Леонидовна', 'Автор', '2008-06-19', 'author', 'ee22a11f96bd21010a664773cc647a41', '1'),
+(10, 'Ураков Павел Юрьевич', 'Читатель', '2000-12-28', 'user', '221db13dbae8a3948d591a4c62ad5de7', '700');
 
 --
 -- Индексы сохранённых таблиц
@@ -124,13 +135,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
