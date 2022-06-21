@@ -29,6 +29,7 @@ class Server {
             localStorage.setItem('token', result.token);
             localStorage.setItem('login', result.login);
             localStorage.setItem('rules', result.rules);
+            localStorage.setItem('is_blocked', result.is_blocked);
             this.token = result.token;
         }
         return result;
@@ -38,6 +39,7 @@ class Server {
 		localStorage.setItem('token', '');
         localStorage.setItem('login', '');
         localStorage.setItem('rules', '');
+        localStorage.setItem('is_blocked', '1');
         return this.getData('logout');
     }
 
@@ -56,6 +58,11 @@ class Server {
 
     async getUserById(data){
         const result = await this.getData('getUserById', data);
+        return result;
+    }
+
+    async getUserByLogin(data){
+        const result = await this.getData('getUserByLogin', data);
         return result;
     }
 
@@ -92,5 +99,9 @@ class Server {
 
     async getComments(data){
         return await this.getData('getComments', data);
+    }
+
+    async banUser(data){
+        return await this.getData('banUser', data);
     }
 }

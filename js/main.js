@@ -4,8 +4,8 @@ window.onload = function () {
         let reviews;
         let find = localStorage.getItem('find');
         if (find){
-            localStorage.setItem('find', '');
             reviews = await server.getReviewByName({name: find});
+            localStorage.setItem('find', '');
         }
         else{
             reviews = await server.getReviews();

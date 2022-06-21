@@ -15,17 +15,19 @@ window.onload = function () {
         for (let i = 0; i < units.length; i++){
             let subtitle = document.createElement('h2');
             let text = document.createElement('p');
-            let image = document.createElement('img');
-            image.width = window.screen.width / 2;
-            image.height = window.screen.height / 2;
 
             text.innerHTML = units[i][1];
             subtitle.innerHTML = units[i][3];
-            image.src = "api/images/units/" + units[i][2];
+            if (units[i][2]){
+                let image = document.createElement('img');
+                image.width = window.screen.width / 2;
+                image.height = window.screen.height / 2;
+                image.src = "api/images/units/" + units[i][2];
+                holder.append(image);
+            }
 
             holder.append(subtitle);
             holder.append(text);
-            holder.append(image);
         }
 
         let advantages = document.getElementById('advantages');
@@ -55,9 +57,16 @@ window.onload = function () {
             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><div class="d-flex justify-content-between align-items-center w-100">\
             <strong class="text-gray-dark"><label id = "comAuth'+ i +'">'+ all_comments[i][1] +':</label>\
             </strong></div><label id = "comment'+ i +'">'+ all_comments[i][0] +'</label></div>'
-            if (rules == 'admin' || name == all_comments[i][1]){
+            if (rules == 'admin' || rules == 'moder' || name == all_comments[i][1]){
                 div.innerHTML += '<button type="button" class="btn btn-sm btn-outline-secondary" id = "del'+ i +'">Удалить\
                                     </button>';
+            }
+            if (rules == 'admin' || rules == 'moder'){
+                user = await server.getUserByLogin({login: all_comments[i][1]});
+                if (user['rules'] == 'user' && user['is_blocked'] == 0){
+                    div.innerHTML += '<button type="button" class="btn btn-sm btn-outline-secondary" id = "ban'+ i +'">Заблокировать\
+                    </button>';
+                }
             }
             commentHolder.append(div);
             
@@ -67,6 +76,15 @@ window.onload = function () {
                     let comAuth = document.getElementById('comAuth' + i).textContent;
                     let comment = document.getElementById('comment' + i).textContent;
                     await server.deleteComment({login: comAuth.slice(0, comAuth.length - 1), comment});
+                    document.location.reload();
+                })
+            }
+
+            let ban = document.getElementById("ban" + i);
+            if (ban){
+                ban.addEventListener('click', async function(){
+                    let comAuth = document.getElementById('comAuth' + i).textContent;
+                    await server.banUser({login: comAuth.slice(0, comAuth.length - 1)});
                     document.location.reload();
                 })
             }
@@ -96,7 +114,14 @@ window.onload = function () {
     } 
     let article_id = localStorage.getItem('article_id');
     let commentBut = document.getElementById('sendComment');
-
+    let is_blocked = localStorage.getItem('is_blocked');
+    if (is_blocked == 0){
+        commentBut.disabled = false;
+    }
+    else{
+        commentBut.disabled = true;
+    }
+  
     commentBut.addEventListener('click', async function(){
         let comment = document.getElementById('inputComment').value;
         let token = localStorage.getItem('token');

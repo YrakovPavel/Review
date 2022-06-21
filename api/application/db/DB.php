@@ -120,4 +120,10 @@ class DB {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function banUser($user_id){
+        $stmt = $this->conn->prepare("UPDATE users SET is_blocked = 1 WHERE user_id = '$user_id'");
+        $stmt->execute();
+        return true;
+    }
 }

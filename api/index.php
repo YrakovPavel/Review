@@ -34,6 +34,10 @@ function router($params) {
                 if ($params['user_id']){
                     return $user->getUserById($params['user_id']);
                 }
+            case 'getUserByLogin':
+                if ($params['login']){
+                    return $user->getUserByLogin($params['login']);
+                }
             case 'getReviews':
                 return $db->getReviews();
             case 'getReview':
@@ -63,6 +67,10 @@ function router($params) {
             case 'getComments':
                 if ($params['article_id']){
                     return $db->getComments($params['article_id']);
+                }
+            case 'banUser':
+                if ($params['login']){
+                    return $user->banUser($params['login']);
                 }
         }
     }

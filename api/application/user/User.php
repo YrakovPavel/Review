@@ -14,7 +14,8 @@ class User {
                 'name' => $user['full_name'],
                 'login' => $user['login'],
                 'rules' => $user['rules'],
-                'token' => $token
+                'token' => $token,
+                'is_blocked' => $user['is_blocked']
             );
         }
     }
@@ -22,7 +23,6 @@ class User {
     public function registration($name, $birthdate, $login, $password) {
         $user = $this->db->getUserByLogin($login);
         if (!$user) {
-
             $this->db->addNewUser($name, $birthdate, $login, $password);
             return $this->login($login, $password);
         }
@@ -56,5 +56,10 @@ class User {
     public function deleteComment($login, $comment){
         $user_id = $this->db->getUserByLogin($login);
         return $this->db->deleteComment($user_id['user_id'], $comment);
+    }
+
+    public function banUser($login){
+        $user_id = $this->db->getUserByLogin($login);
+        return $this->db->banUser($user_id['user_id']);
     }
 }
